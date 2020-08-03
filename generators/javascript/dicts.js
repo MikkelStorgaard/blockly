@@ -30,7 +30,8 @@ Blockly.JavaScript['dicts_create_with'] = function(block) {
                                                  Blockly.JavaScript.ORDER_COMMA) || 'null';
         var value = Blockly.JavaScript.valueToCode(block, 'VALUE' + i,
                                                    Blockly.JavaScript.ORDER_COMMA) || 'null';
-        elements[i] = key + ":" + value;
+        // Added square brackets on either side of the key
+        elements[i] = '[' + key + ']' + ":" + value;
     }
     var code = '{' + elements.join(', ') + '}';
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
@@ -39,8 +40,8 @@ Blockly.JavaScript['dicts_create_with'] = function(block) {
 Blockly.JavaScript['dicts_get'] = function(block) {
     var value_key = Blockly.JavaScript.valueToCode(block, 'key', Blockly.JavaScript.ORDER_ATOMIC);
     var value_dict = Blockly.JavaScript.valueToCode(block, 'dict', Blockly.JavaScript.ORDER_ATOMIC);
-    // TODO: Assemble JavaScript into code variable.
-    var code = value_dict+"['"+value_key+"']";
+    // Removed single quotes from value_key
+    var code = value_dict+"["+value_key+"]";
     // TODO: Change ORDER_NONE to the correct strength.
     return [code, Blockly.JavaScript.ORDER_NONE];
 };
@@ -48,8 +49,8 @@ Blockly.JavaScript['dicts_set'] = function(block) {
     var value_key = Blockly.JavaScript.valueToCode(block, 'key', Blockly.JavaScript.ORDER_ATOMIC);
     var value_value = Blockly.JavaScript.valueToCode(block, 'value', Blockly.JavaScript.ORDER_ATOMIC);
     var value_dict = Blockly.JavaScript.valueToCode(block, 'dict', Blockly.JavaScript.ORDER_ATOMIC);
-    // TODO: Assemble JavaScript into code variable.
-    var code = value_dict+"['"+value_key+"'] = "+value_value;
+    // Removed single quotes from value_key
+    var code = value_dict+"["+value_key+"] = "+value_value;
     return code;
 };
 Blockly.JavaScript['dicts_contains'] = function(block) {
