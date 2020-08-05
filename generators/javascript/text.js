@@ -375,7 +375,7 @@ Blockly.JavaScript['text_chomp'] = function(block) {
         'chomp',
         ['function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ +
          '(regex, buffer) {',
-         "  var regexp = new RegExp(['(^', regex, ')(.*)'].join(''));" +
+         "  var regexp = new RegExp(['^\ *(', regex, ')(.*)'].join(''));" +
          '  var matches = '+value_string+'.match(regexp);'+
          '  if(matches != null && matches.length == 3){'+
          '    buffer.push(matches[1]);'+
